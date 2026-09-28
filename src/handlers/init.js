@@ -44,9 +44,10 @@ let db
 let proxyClient
 let consumersMap
 let monitoringServer
+let config
 
 const startFn = async (handlerList, appConfig = undefined) => {
-  const config = appConfig || new Config()
+  config = appConfig || new Config()
 
   db = new Database(config)
   await db.connect()
@@ -98,7 +99,7 @@ const stopFn = async () => {
   await monitoringServer?.stop()
 
   await Util.Endpoints.stopCache()
-  await Util.Endpoints.stopProxy()
+  if (config?.proxyCache?.enabled) await Util.Endpoints.stopProxy()
 
   proxyClient?.isConnected && await proxyClient.disconnect()
 

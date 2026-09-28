@@ -1516,7 +1516,7 @@ describe('/database', () => {
         const result = await database.getQuoteParty(quoteId, partyType)
 
         // Assert
-        expect(result).toStrictEqual(null)
+        expect(result).toBeNull()
       })
 
       it('returns null when the query returns no rows', async () => {
@@ -1533,7 +1533,7 @@ describe('/database', () => {
         const result = await database.getQuoteParty(quoteId, partyType)
 
         // Assert
-        expect(result).toStrictEqual(null)
+        expect(result).toBeNull()
       })
 
       it('handles an exception', async () => {
@@ -1606,7 +1606,7 @@ describe('/database', () => {
         const result = await database.getTxnQuoteParty(txn, quoteId, partyType)
 
         // Assert
-        expect(result).toStrictEqual(null)
+        expect(result).toBeNull()
       })
 
       it('returns null when the query returns no rows', async () => {
@@ -1624,7 +1624,7 @@ describe('/database', () => {
         const result = await database.getTxnQuoteParty(txn, quoteId, partyType)
 
         // Assert
-        expect(result).toStrictEqual(null)
+        expect(result).toBeNull()
       })
 
       it('handles an exception', async () => {
@@ -1685,7 +1685,7 @@ describe('/database', () => {
         const result = await database.getQuoteDuplicateCheck(quoteId)
 
         // Assert
-        expect(result).toBe(null)
+        expect(result).toBeNull()
         expect(mockList[0]).toHaveBeenCalledWith('quoteDuplicateCheck')
         expect(mockList[1]).toHaveBeenCalledWith({ quoteId })
         expect(mockList[2]).toHaveBeenCalledTimes(1)
@@ -1700,7 +1700,7 @@ describe('/database', () => {
         const result = await database.getQuoteDuplicateCheck(quoteId)
 
         // Assert
-        expect(result).toBe(null)
+        expect(result).toBeNull()
         expect(mockList[0]).toHaveBeenCalledWith('quoteDuplicateCheck')
         expect(mockList[1]).toHaveBeenCalledWith({ quoteId })
         expect(mockList[2]).toHaveBeenCalledTimes(1)
@@ -1744,7 +1744,7 @@ describe('/database', () => {
         const result = await database.getQuoteResponseDuplicateCheck(quoteId)
 
         // Assert
-        expect(result).toBe(null)
+        expect(result).toBeNull()
         expect(mockList[0]).toHaveBeenCalledWith('quoteResponseDuplicateCheck')
         expect(mockList[1]).toHaveBeenCalledWith({ quoteId })
         expect(mockList[2]).toHaveBeenCalledTimes(1)
@@ -1759,7 +1759,7 @@ describe('/database', () => {
         const result = await database.getQuoteResponseDuplicateCheck(quoteId)
 
         // Assert
-        expect(result).toBe(null)
+        expect(result).toBeNull()
         expect(mockList[0]).toHaveBeenCalledWith('quoteResponseDuplicateCheck')
         expect(mockList[1]).toHaveBeenCalledWith({ quoteId })
         expect(mockList[2]).toHaveBeenCalledTimes(1)

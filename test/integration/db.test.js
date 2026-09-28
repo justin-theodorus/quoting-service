@@ -107,7 +107,7 @@ describe('Database Integration Tests --> ', () => {
         (result) => result && result.length === 2
       )
       expect(quoteParties).toBeDefined()
-      expect(quoteParties.length).toBe(2)
+      expect(quoteParties).toHaveLength(2)
 
       const payer = quoteParties.find(p => p.transferParticipantRoleTypeId === 1)
       const payee = quoteParties.find(p => p.transferParticipantRoleTypeId === 2)

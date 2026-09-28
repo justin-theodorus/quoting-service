@@ -98,7 +98,7 @@ describe('ISO API Tests -->', () => {
       expect(getResp.status).toBe(202)
 
       const getCallback = await getHistoryWithRetry()
-      expect(getCallback.data.history.length).toBe(1)
+      expect(getCallback.data.history).toHaveLength(1)
     })
   })
 
@@ -113,7 +113,7 @@ describe('ISO API Tests -->', () => {
       expect(response.status).toBe(200)
 
       const { data } = await getHistoryWithRetry()
-      expect(data.history.length).toBe(1)
+      expect(data.history).toHaveLength(1)
       const { body, headers } = data.history[0]
       expect(headers['content-type']).toContain(ISO_HEADER_PART)
       expect(body.TxInfAndSts.StsRsnInf.Rsn.Prtry).toBe(expectedErrorCode)
@@ -143,7 +143,7 @@ describe('ISO API Tests -->', () => {
       expect(response.status).toBe(200)
 
       const { data: putData } = await getHistoryWithRetry()
-      expect(putData.history.length).toBe(1)
+      expect(putData.history).toHaveLength(1)
       const { body, headers } = putData.history[0]
       expect(headers['content-type']).toContain(ISO_HEADER_PART)
 
@@ -168,7 +168,7 @@ describe('ISO API Tests -->', () => {
       expect(response.status).toBe(202)
 
       const { data } = await getHistoryWithRetry()
-      expect(data.history.length).toBe(1)
+      expect(data.history).toHaveLength(1)
       const { body, headers } = data.history[0]
       expect(headers['content-type']).toContain(ISO_HEADER_PART)
       expect(body.CdtTrfTxInf.PmtId.TxId).toBe(postFxArgs.conversionRequestId)
@@ -181,7 +181,7 @@ describe('ISO API Tests -->', () => {
       const postResponse = await qsClient.postIsoFxQuotes(postFxArgs)
       expect(postResponse.status).toBe(202)
       const postCallback = await getHistoryWithRetry()
-      expect(postCallback.data.history.length).toBe(1)
+      expect(postCallback.data.history).toHaveLength(1)
       await hubClient.clearHistory()
 
       const errorCode = '3100'
@@ -194,7 +194,7 @@ describe('ISO API Tests -->', () => {
       expect(response.status).toBe(200)
 
       const { data } = await getHistoryWithRetry()
-      expect(data.history.length).toBe(1)
+      expect(data.history).toHaveLength(1)
       const { body, headers } = data.history[0]
       expect(headers['content-type']).toContain(ISO_HEADER_PART)
       expect(body.TxInfAndSts.StsRsnInf.Rsn.Prtry).toBe(errorCode)
@@ -206,7 +206,7 @@ describe('ISO API Tests -->', () => {
       expect(postResponse.status).toBe(202)
 
       const { data: postData } = await getHistoryWithRetry()
-      expect(postData.history.length).toBe(1)
+      expect(postData.history).toHaveLength(1)
       const { body: postBody, headers: postHeaders } = postData.history[0]
       expect(postHeaders['content-type']).toContain(ISO_HEADER_PART)
       expect(postBody.CdtTrfTxInf.PmtId.TxId).toBe(postFxArgs.conversionRequestId)
@@ -221,7 +221,7 @@ describe('ISO API Tests -->', () => {
       expect(response.status).toBe(200)
 
       const { data: putData } = await getHistoryWithRetry()
-      expect(putData.history.length).toBe(1)
+      expect(putData.history).toHaveLength(1)
       const { body, headers } = putData.history[0]
       expect(headers['content-type']).toContain(ISO_HEADER_PART)
 
